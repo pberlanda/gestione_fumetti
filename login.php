@@ -19,16 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
     }
 
     $result = $stmt->get_result();
-    //$result->fetch_assoc();
 
-    while($usr = $result->fetch_assoc()){
-        // test
-        //echo $usr['username'] . ' ' . $usr['password'];
+/*     while($usr=$result->fetch_assoc()){
+        $utente_username = $usr['username'];
+        $utente_password = $usr['password'];
+    }*/
 
-        $utente_username=$usr['username'];
-        $utente_password=$usr['password'];
-
-    }
+    // non serve fare il ciclo while su un result set che contiene una sola tupla
+    $usr = $result->fetch_assoc();
+    $utente_username = $usr['username'];
+    $utente_password = $usr['password'];
 
     // controllo nome utente e pwd immessi
     if ($username == $utente_username && password_verify($password, $utente_password)){
