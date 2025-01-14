@@ -1,0 +1,3 @@
+provo a fare un sito che cion un home page, e un'area riservata a scui si accede solo tramite login
+
+stesso db di gestuone libreria per comodita
