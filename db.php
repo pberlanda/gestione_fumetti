@@ -3,7 +3,7 @@
 $server="localhost";
 $username="root";
 $password="";
-$dbName="gestione_libri";
+$dbName="gestione_fumetti";
 
 $conn = new mysqli($server,$username,$password,$dbName);
 
