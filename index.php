@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=="POST" || isset($_POST['Nuovo'])){
 <body>
     <h1>Gestione fumetti</h1>
 
-    <a href="admin.php">Area riservata</a><br><br>
+    <a href="area_riservata.php">Area riservata</a><br><br>
 
     <form method="POST">
         <label for="codice">Codice</label>

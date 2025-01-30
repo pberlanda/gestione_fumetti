@@ -8,3 +8,13 @@ table{
 th {
     background-color: lightblue;
 }
+form{
+    width: 30%;
+    border: 3px solid lightgray;
+    padding: 5px;
+}
+form input{
+    display: block;
+    padding: 3px;
+    margin-bottom: 5px;
+}
