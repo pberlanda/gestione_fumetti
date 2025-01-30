@@ -27,12 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
 
     // non serve fare il ciclo while su un result set che contiene una sola tupla
     $usr = $result->fetch_assoc();
+
+    // per comodità, uso due variabili peer controllare i dati ottentui dal db.
     $utente_username = $usr['username'];
     $utente_password = $usr['password'];
 
     // controllo nome utente e pwd immessi
     if ($username == $utente_username && password_verify($password, $utente_password)){
-        echo "ciao"; // qui arriva, quindi il controllo pwd funziona
+        echo "TEST ciao"; // qui arriva, quindi il controllo pwd funziona
         $_SESSION['loggedin'] = true;
         header('Location: admin.php');
         exit;
@@ -51,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['reg_username']) && isse
     $regUsername=$_POST['reg_username'];
     $regPassword=$_POST['reg_password'];
 
-    //echo "check"; // test
+    echo "TEST verifico se entro in sezione php creazione nuovo utente"; // test
 
     // creo hash della pwd
     $hashedPassword = password_hash($regPassword,PASSWORD_DEFAULT);
@@ -61,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['reg_username']) && isse
 
     if($stmt->execute()){
         $_SESSION['loggedin']=true;
-        echo "Ok, utente creato";
+        echo "TEST Ok, utente creato";
         header('Location: login.php');
         exit;
    
@@ -69,6 +71,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['reg_username']) && isse
         echo "Errore " . $stmt->error;
     }
 
+    // libera risorse
     $stmt->close();
     $conn->close();
 
