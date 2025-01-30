@@ -17,11 +17,24 @@ if(!isset($_SESSION['loggedin'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Area riservataa</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function conferma_logout(){
+
+            // chiedo conferma all'utente per eseguire il logout, se l'utente annulla impedisco il refresh della pagina (javascript maledetto)
+            if (confirm("Sicuro di voler uscire?")){
+                window.location.href='logout.php';
+            } else {
+                event.preventDefault();
+            }
+
+        }
+    </script>
 </head>
 <body>
     <h1>Gestione fumetti</h1>
     <a href="nuovo.php">Nuovo</a>
-    <a href="logout.php">Logout</a>
+    <!-- <a href="logout.php">Logout</a> -->
+    <a href="logout.php" onclick="conferma_logout()">Logout</a>
 
     <br><br>
     
