@@ -15,7 +15,7 @@ if(!isset($_SESSION['loggedin'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Area riservataa</title>
+    <title>Area riservata</title>
     <link rel="stylesheet" href="style.css">
     <script>
         function conferma_logout(){
@@ -70,12 +70,61 @@ if(!isset($_SESSION['loggedin'])){
                 echo "</tr>";
             }
 
-            $stmt->close();
-            $conn->close();
+            // se chiudo gli oggetti del db qui, non posso eseguire altre query.
+            // servce un modo per riaprili in caso di necessità
+            //$stmt->close();
+            //$conn->close();
 
         ?>
 
     </table>
+
+    <h2>Elenco utenti</h2>
+    <div>
+
+        <?php 
+        echo 'TEST caricamento utenti<br>';
+
+        // imposto query SQL
+        $sql = "SELECT username FROM utenti WHERE 1 ORDER BY username";
+
+        // preparo la query e i parametri
+        $stmt = $conn->prepare($sql);
+        //$stmt->bind_param(); // s str i int f float b blob
+
+        // eseguo la query
+        if($stmt->execute()){
+            echo 'TEST, Ok query eseguita<br>';
+        } else {
+            echo 'Errore ' . $stmt->error;
+        }
+
+        // prendo il result set della query
+        $result = $stmt->get_result();
+
+        echo 'TEST Numero righe restituite ' . $result->num_rows . '<br>';
+
+        // se ci sono, carico i irisultati in una lista non ordinata
+        if ($result->num_rows>0){
+            echo "<ul>";
+
+            // loop sui risultati, per ogni utente aggiungo un elemento alla lista
+            while($utente = $result->fetch_assoc()){
+                echo "<li>" . $utente['username'] . "</li>"; 
+            }
+    
+            echo "</ul>";
+        } else {
+            echo 'Nessun utente presente'; // qui non ci arriva mai: all'area riservata si arriva solo se loggati
+        }
+
+        // libero risorse
+        $stmt->close();
+        $conn->close();
+
+        ?>
+
+    </div>
 
 </body>
 </html>
