@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
     if ($username == $utente_username && password_verify($password, $utente_password)){
         echo "TEST ciao"; // qui arriva, quindi il controllo pwd funziona
         $_SESSION['loggedin'] = true;
-        header('Location: admin.php');
+        header('Location: area_riservata.php');
         exit;
     } else {
         echo 'Username o password errata';

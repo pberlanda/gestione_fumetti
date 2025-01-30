@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['codice'])){
     $stmt->close();
     $conn->close();
 
-    header('Location: admin.php');
+    header('Location: area_riservata.php');
 
     exit;
 
@@ -56,7 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['codice'])){
     <input type="submit" value="Nuovo">
 </form>
 
-<a href="admin.php">Torna a area riservata</a>
+<a href="area_riservata.php">Torna a area riservata</a>
     
 </body>
 </html>

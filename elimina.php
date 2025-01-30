@@ -5,7 +5,7 @@ require 'db.php';
 
 // devi essere loggato
 if (!isset($_SESSION['loggedin'])){
-    header('Location: admin.php');
+    header('Location: area_riservata.php');
     exit;
 }
 
@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $stmt->close();
     $conn->close();
 
-    header('Location: admin.php');
+    header('Location: area_riservata.php');
 
 }
 
@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <input type="submit" value="Elimina" onclick=confirm("Sicuro?")>
     </form>
 
-    <a href="admin.php">Torna all'area riservata</a>
+    <a href="area_riservata.php">Torna all'area riservata</a>
 
 </body>
 </html>
