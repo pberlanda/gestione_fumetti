@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['reg_username']) && isse
     if($stmt->execute()){
         $_SESSION['loggedin']=true;
         //echo "TEST Ok, utente creato";
-        $msg="Utente " . $regUsername . "creato con successo";
+        $msg="Utente " . $regUsername . " creato con successo";
 
         echo "<p class='success'>" . $msg . "</p>";
 
