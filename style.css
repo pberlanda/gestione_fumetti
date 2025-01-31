@@ -18,3 +18,12 @@ form input{
     padding: 3px;
     margin-bottom: 5px;
 }
+.class warning{
+    color: orange;
+}
+.class error{
+    color: red;
+}
+.class success{
+    color: green;
+}
